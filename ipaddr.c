@@ -284,7 +284,8 @@ int ipaddr_remote(ipaddr *addr, const char *name, int port, int mode,
             if(dsock_slow(rc < 0)) return -1;
             continue;
         }
-        if(rc == ENOENT)
+        dsock_assert(DNS_EBASE < DNS_ELAST);
+        if(rc == ENOENT || (rc >= DNS_EBASE && rc <= DNS_ELAST))
             break;
         if(!ipv4 && it && it->ai_family == AF_INET)
             ipv4 = it;
