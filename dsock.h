@@ -523,7 +523,7 @@ extern const void *btls_listener_type;
 #define DSOCK_BTLS_CIPHERS_LEGACY         (3 << 19)
 #define DSOCK_BTLS_CIPHERS_INSECURE       (4 << 19)
 #define DSOCK_BTLS_CIPHERS_SPECIFIC       (5 << 19) /* see list below */
-#define DSOCK_BTLS_CIPHERS_VALUE(x)       ((x >> 19) & 0x7)
+#define DSOCK_BTLS_CIPHERS_VALUE(x)       (x & (0x7 << 19))
 
 #define DSOCK_BTLS_VERIFY_DEPTH_DEFAULT   (6 << 22)
 #define DSOCK_BTLS_VERIFY_DEPTH(X)        (X << 22)
