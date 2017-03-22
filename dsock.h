@@ -571,6 +571,7 @@ extern const void *btls_listener_type;
 #define DSOCK_BTLS_CIPHERS_AES128_GCM_SHA256                 (1ull << 36)
 #define DSOCK_BTLS_CIPHERS_AES128_SHA256                     (1ull << 37)
 #define DSOCK_BTLS_CIPHERS_CAMELLIA128_SHA256                (1ull << 38)
+#define DSOCK_BTLS_CIPHERS_AES256_SHA                        (1ull << 39)
 
 #define DSOCK_BTLS_DEFAULT \
     (DSOCK_BTLS_PROTO_DEFAULT| \
