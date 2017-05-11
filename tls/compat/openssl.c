@@ -16,15 +16,16 @@
 
 
 #include <openssl/opensslv.h>
-
-#if (OPENSSL_VERSION_NUMBER < 0x10003000L)
 #include <openssl/x509_vfy.h>
 #include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/stat.h>
+#include <time.h>
+#include <ctype.h>
 
+#if (OPENSSL_VERSION_NUMBER < 0x10003000L)
 int SSL_CTX_load_verify_mem(SSL_CTX *ctx, void *buf, int len)
 {
     char fname[] = "/tmp/dsockcompatXXXXXX";
@@ -57,6 +58,8 @@ int SSL_CTX_load_verify_mem(SSL_CTX *ctx, void *buf, int len)
     remove(fname);
     return rc;
 }
+
+#endif
 
 /*
  * Copyright (c) 2015 Bob Beck <beck@openbsd.org>
@@ -173,4 +176,3 @@ asn1_time_parse(const char *bytes, size_t len, struct tm *tm, int mode)
 	return (type);
 }
 
-#endif

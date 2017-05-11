@@ -332,7 +332,7 @@ tls_configure_ssl(struct tls *ctx, SSL_CTX *ssl_ctx)
 		SSL_CTX_set_options(ssl_ctx, SSL_OP_NO_TLSv1_2);
 
 	if (ctx->config->alpn != NULL) {
-		if (SSL_CTX_set_alpn_protos(ssl_ctx, ctx->config->alpn,
+		if (SSL_CTX_set_alpn_protos(ssl_ctx, (unsigned char *)ctx->config->alpn,
 		    ctx->config->alpn_len) != 0) {
 			tls_set_errorx(ctx, "failed to set alpn");
 			goto err;

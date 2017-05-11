@@ -27,6 +27,12 @@
 #include <tls.h>
 #include "tls_internal.h"
 
+#ifdef  LIBRESSL_VERSION_NUMBER
+/* This is not defined in libressl */
+void explicit_bzero(void *buf, size_t len);
+#endif
+
+
 static int
 set_string(const char **dest, const char *src)
 {
@@ -573,13 +579,13 @@ tls_config_set_keypair_mem(struct tls_config *config, const uint8_t *cert,
 	return (0);
 }
 
-void
+int
 tls_config_set_protocols(struct tls_config *config, uint32_t protocols)
 {
 	config->protocols = protocols;
 }
 
-void
+int
 tls_config_set_verify_depth(struct tls_config *config, int verify_depth)
 {
 	config->verify_depth = verify_depth;
