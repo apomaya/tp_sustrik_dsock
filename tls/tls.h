@@ -76,8 +76,8 @@ int tls_config_set_keypair_file(struct tls_config *_config,
     const char *_cert_file, const char *_key_file);
 int tls_config_set_keypair_mem(struct tls_config *_config, const uint8_t *_cert,
     size_t _cert_len, const uint8_t *_key, size_t _key_len);
-void tls_config_set_protocols(struct tls_config *_config, uint32_t _protocols);
-void tls_config_set_verify_depth(struct tls_config *_config, int _verify_depth);
+int tls_config_set_protocols(struct tls_config *_config, uint32_t _protocols);
+int tls_config_set_verify_depth(struct tls_config *_config, int _verify_depth);
 
 void tls_config_prefer_ciphers_client(struct tls_config *_config);
 void tls_config_prefer_ciphers_server(struct tls_config *_config);
